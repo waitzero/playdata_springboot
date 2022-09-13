@@ -1,0 +1,15 @@
+package com.simple.bootbasic.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController //완전히 다른 방식으로 컨트롤러 역할
+public class RestBasicController {
+
+	@GetMapping("/text")
+	public String text() {
+		
+		return "hello world"; //??
+	}
+	
+}

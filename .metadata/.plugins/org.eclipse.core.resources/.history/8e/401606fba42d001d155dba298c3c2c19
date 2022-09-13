@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+<th:block th:replace="~{./include/layout03 :: 함수( ~{:: #first } )  }">
+	
+	<div id="first">
+		id의 선택자는 #입니다
+	</div>
+
+</th:block>
+
+
+

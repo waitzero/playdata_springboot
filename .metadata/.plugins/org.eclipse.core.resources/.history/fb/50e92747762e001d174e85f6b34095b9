@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 마이바티스 구현 인터페이스명 -->
+<mapper namespace="com.simple.bootbasic.service.board.BoardMapper">
+	<!-- id는 구현인터페이스의 메서드명 -->
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+	
+	<insert id="regist">
+		insert into board(name, title, content)
+		values(#{name}, #{title}, #{content})	
+	</insert>
+	
+	<select id="getList" resultType="BoardVO">
+	
+	</select>
+	
+	
+	
+</mapper>

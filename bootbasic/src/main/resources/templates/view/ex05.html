@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	[[${arr}]]
+	
+	<h3>내장함수</h3>
+	
+	<!-- list api -->
+	[[${#lists.size(arr) }]]
+	[[${#lists.contains(arr, 3) }]]
+	[[${#lists.contains(arr, 100) }]]
+	
+	<br>
+	<!-- 문자열 api -->
+	[[${name}]]
+	[[${#strings.substring(name, 1,2) }]]<!-- 1이상~2미만 -->
+	
+	<br>
+	<!-- 날짜형 형식변환 -->
+	[[${vo.regdate}]]<br>
+	[[${#temporals.format(vo.regdate , 'yyyy-MM-dd' ) }]]<br>
+	[[${#temporals.format(vo.regdate , 'yyyy년MM월dd' ) }]]<br>
+	
+	
+	
+	
+</body>
+</html>

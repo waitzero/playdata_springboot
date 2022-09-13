@@ -1,0 +1,60 @@
+package com.simple.bootbasic.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.simple.bootbasic.command.ValidVO;
+
+@Controller
+@RequestMapping("/valid")
+public class ValidController {
+
+	//화면처리
+	@GetMapping("/view")
+	public String view() {
+		return "valid/view";
+	}
+	
+	//폼처리
+	@PostMapping("/validForm")
+	public String validForm(@Valid ValidVO vo, Errors errors ) {
+		//@Valid가 붙은 유효성검사를 진행, 유효성 검사에 실패한 멤버변수는 errors바인딩
+		
+		if(errors.hasErrors()) {
+			//System.out.println("유효성검사 실패");
+			//System.out.println("유효성검사 실패개수:" + errors.getFieldErrorCount());
+			
+			List<FieldError> list = errors.getFieldErrors(); //유효성 검사 실패 목록
+			for(FieldError err  : list ) {
+				System.out.println(err);
+				System.out.println(err.getField() ); //유효성에 실패한 필드명
+				System.out.println(err.getDefaultMessage() ); //유효성에 실패한 필드 메시지
+			}
+			
+			
+		}
+		
+		
+		System.out.println(vo.toString());
+			
+		
+		return "valid/view_success";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

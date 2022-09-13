@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+
+
+
+
+	<div class="wrap">
+		<div class="warp_inner">
+
+			<!-- left_menu end -->
+			<div class="right_content">
+				<div class="midiaq">
+					<div class="mainWrapper">
+						<div class="ipssGiudeBlock">
+							<span>판매자매니저가 더 쉽고 편하게 개편되었습니다.</span>
+						</div>
+					</div>
+					<div class="mainWrapper">
+                        <div class="currentStatusBlock">
+                            <div class="statusBoard">
+                                <div class="section">
+                                    <a href="#">
+                                        <h3>주문확인지연</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+                                <div class="section">
+                                    <a href="#">
+                                        <h3>발송처리지연</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+								<div class="section">
+                                    <a href="#">
+                                        <h3>취소지연</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+								<div class="section">
+                                    <a href="#">
+                                        <h3>반품지연</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+								<div class="section">
+                                    <a href="#">
+                                        <h3>교환지연</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+								<div class="section">
+                                    <a href="#">
+                                        <h3>교환반품</h3>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+								
+							</div>
+                        </div>
+					</div>
+					<div class="mainWrapper">
+						<div class="mBlockWrap col1 sales"> 
+							<div class="mainBlock">
+								<div class="mTitle">
+									<h2>판매현황</h2>
+								</div>
+								<div class="mContent">
+									<div class="statusBox">
+
+										<dl>
+											<a href="#"><dt>입금대기</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>입금대기</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>입금대기</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>입금대기</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>입금대기</dt></a>
+											<dd>0</dd>
+										</dl>
+									</div>
+									<div class="statusBox">
+
+										<dl>
+											<a href="#"><dt>배송중</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>배송완료</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>구매확정</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>보류중</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>....</dt></a>
+											<dd>0</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mBlockWrap col2 sales"> 
+							<div class="mainBlock">
+								<div class="mTitle">
+									<h2>상품현황</h2>
+								</div>
+								
+								<div class="mContent">
+									<div class="statusBox">
+
+										<dl>
+											<a href="#"><dt>판매중상품</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>판매종료상품</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>판매가능상품</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>판매종료예정</dt></a>
+											<dd>0</dd>
+										</dl>
+										
+									</div>
+									<div class="statusBox">
+
+										<dl>
+											<a href="#"><dt>...</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>...</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>...</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>...</dt></a>
+											<dd>0</dd>
+										</dl>
+										<dl>
+											<a href="#"><dt>....</dt></a>
+											<dd>0</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mBlockWrap col3 sales"> 
+							<div class="mainBlock">
+								<div class="mTitle">
+									<h2>공지사항</h2>
+								</div>
+								<div class="mContent">
+									<div class="statusBox">
+										<ul>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mBlockWrap col3 sales"> 
+							<div class="mainBlock">
+								<div class="mTitle">
+									<h2>문의현황</h2>
+								</div>
+								<div class="mContent">
+									<div class="statusBox">
+										<ul>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+											<li>
+												<a href="#">
+												<span class="tag_point">일반</span>
+												<span class="txt">[오픈공지] 판매자 스토어 서비스 오픈 안내 (11/9)</span>
+												</a>
+												<span class="date">20.10.10</span>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<footer id="footer">
+		<div class="footer_wrap">
+				<div class="footer_top">
+						<!-- 상위 -->
+						<ul class="fl_right">
+								<li><a href="#"><span>Coding404 둘러보기</span></a></li>
+								<li><a href="#"><span>상품등록</span></a></li>
+								<li><a href="#"><span>상품관리</span></a></li>
+								<li><a href="#"><span>상품수정</span></a></li>
+								<li><a href="#"><span>회원</span></a></li>
+								<li><a href="#"><span>고객센터</span></a></li>
+						</ul>
+				</div>
+		</div>
+
+		<div class="footer_wrap2">
+				<div class="footer_bot">
+						<!-- 하위 -->
+		
+						<ul class="fl_left">
+								<li><a href="#">이용약관</a></li>
+								<li><a href="#">위치기반서비스 이용약관</a></li>
+								<li><a href="#">개인정보처리방침</a></li>
+								<li><a href="#">청소년보호정책</a></li>
+								<li><a href="#">제휴/프로모션문의</a></li>
+								<li><a href="#">이메일주소무단수집거부</a></li>
+								<li><a href="#">파트너센터</a></li>
+						</ul>
+						<p>
+								<strong>(주)Coding404</strong>
+								<span>(주소는 비밀)</span>
+								<span>대표이사 : Coding404(PARK)</span>
+								<span>사업자등록번호 : 비밀</span>
+								<span>통신판매업신고번호 : 2018-성남분당B-0004</span>
+								<span>사업자정보확인</span>
+								<br />
+								<span>문의전화 : 비밀 (평일 09:00-18:00, 유료)</span>
+								<span>이메일 : yopy0817@gmail.com</span>
+								<span>호스팅서비스사업자 : (주)AWS</span>
+								<span>© Coding404 Entertainment Corp.</span>
+						</p>
+		
+				</div>
+		</div>
+	</footer>	
+
+</body>
+
+</html>

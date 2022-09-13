@@ -1,0 +1,5 @@
+package com.coding404.myweb.user.service;
+
+public interface UserService {
+	public int idCheck(UserVO vo);
+}

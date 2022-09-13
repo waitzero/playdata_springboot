@@ -1,0 +1,30 @@
+package com.coding404.myweb.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+
+	//로그인화면
+	@GetMapping("/login")
+	public String login() {
+		return "user/login";
+	}
+	
+	//가입화면
+	@GetMapping("/join")
+	public String join() {
+		return "user/join";
+	}
+	
+	//상세화면
+	@GetMapping("/userDetail")
+	public String userDetail() {
+		return "user/userDetail";
+	}
+
+	
+}

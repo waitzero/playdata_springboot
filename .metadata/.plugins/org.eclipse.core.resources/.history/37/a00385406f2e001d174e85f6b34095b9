@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<pre>
+create table board(
+	bno int primary key auto_increment,
+    name varchar(50) not null,
+    title varchar(50),
+    content varchar(200)
+);
+</pre>
+
+	
+	<h2>게시글 등록</h2>
+	<form action="boardForm" method="post">
+
+		작성자:<input name="name"><br>
+		제목:<input name="title"><br>
+		내용:<textarea rows="3" name="content"></textarea><br>
+		
+		<input type="submit" value="등록">
+		<input type="button" value="목록" onclick="location.href='????'">
+		
+	</form>
+
+
+</body>
+</html>

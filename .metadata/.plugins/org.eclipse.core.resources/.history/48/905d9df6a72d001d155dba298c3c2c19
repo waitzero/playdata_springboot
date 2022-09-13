@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+<th:block th:replace="~{./include/layout03 :: 함수( ~{ :: #first} ) }">
+	
+	<div id="first">
+		id의 선택자는 #입니다
+	</div>
+	
+	
+	
+</th:block>
+
+
+
+<script>
+	//이 화면에서 사용할 스크립트 구문은 th block 바깥에 적는다.
+	var a = 1;
+</script>
+	
+
+

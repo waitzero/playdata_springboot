@@ -1,0 +1,24 @@
+package com.simple.bootbasic.command;
+
+import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ValidVO {
+
+	//유효성 검사를 진행할때는 기본타입이 null값을 가질수 없기 때문에
+	//wrapper형으로 선언해줍니다.
+	
+	@NotBlank
+	private String name;
+	private Integer salary;
+	private String phone;
+	private String email;
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<!-- 템플릿 사용방법 - 함수(매개변수) -->
+<body th:fragment="함수(section)">
+	
+	<h3>템플릿의 모형 사용하기</h3>
+	
+</body>
+</html>

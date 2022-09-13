@@ -1,0 +1,5 @@
+package com.coding404.myweb.intercepter;
+
+public class UserAuthHandler {
+
+}

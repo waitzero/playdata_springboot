@@ -1,0 +1,15 @@
+package com.coding404.myweb.command;
+
+import java.time.LocalDateTime;
+
+public class UsersVO {
+	private String id;
+	private String name;
+	private String pw;
+	private String phone;
+	private String sns_yn;
+	private LocalDateTime regdate;
+	
+	
+
+}

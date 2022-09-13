@@ -1,0 +1,9 @@
+CREATE table users(
+	id varchar(50) primary key,
+    name varchar(50) not null,
+    pw varchar(50) not null,
+    phone varchar(50),
+    sys_yn char(1) check( sns_yn in ('y', 'n')) default 'n',
+    regdate timestamp  default current_timestamp
+    
+);

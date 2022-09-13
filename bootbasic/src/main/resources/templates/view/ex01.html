@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+	<h3> 타임리프 출력문</h3>
+		
+	<h3 th:text="${'hello world'}"></h3>
+	<h3>[[${'hello world'}]]</h3> 
+	
+	<h3 th:text="${1 == 1}"></h3>
+	<h3>[[${1 == 1}]]</h3>
+	
+	<h3 th:text="${12 % 2 == 0 and 12 % 3 == 0}"></h3>
+	<h3>[[${12 % 2 == 0 and 12 % 3 == 0}]]</h3>
+	 
+	<!-- 문자열이 같다의 표현 -->
+	<h3 th:text="${'홍길동' == '홍길동'}"></h3>
+	<h3>[[${'이순신' eq '이순신' }]]</h3>
+	
+	
+	<!-- 타임리프의 변수선언 -->
+	<div th:with="a = 10">
+		[[${a}]]
+	</div>
+	
+	
+	
+	<!-- 
+		조건 if~ else 
+		언레스 구문에는 if와 동일한 조건을 작성합니다
+	-->
+	<div th:with="a = 10">
+		<span th:if="${a < 10}">참입니다</span>
+		<span th:unless="${a < 10}">거짓입니다</span>
+	</div>
+	
+	<!-- 3항 연산자 -->
+	<div th:with="a = 10">
+		[[${a < 10 ? '참' : '거짓'}]]
+		<br>
+		[[${a} < 10 ? '참': '거짓' ]]
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

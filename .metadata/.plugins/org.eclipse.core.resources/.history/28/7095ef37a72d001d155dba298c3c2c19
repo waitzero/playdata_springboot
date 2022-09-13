@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+
+<th:block>
+
+	<div class="second">
+		클래스의 선택자는 . 입니다
+		<!-- layout03에 템플릿에 적용시켜보세요 -->
+	</div>
+
+</th:block>
+

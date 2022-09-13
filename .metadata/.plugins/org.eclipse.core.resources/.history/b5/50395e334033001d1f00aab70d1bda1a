@@ -1,0 +1,9 @@
+package com.coding404.myweb.intercepter;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+
+public class UserAuthHandler implements HandlerInterceptor {
+	
+	//오버라이딩
+
+}

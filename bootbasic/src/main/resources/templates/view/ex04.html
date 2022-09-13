@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>타임리프의 th:inline</h3>
+	
+	[[${vo}]]<br>
+	[[${name}]]<br>
+	[[${arr}]]
+	
+	
+	<script th:inline="javascript">
+		//JSON.parse() = 문자열을 -> json으로
+		//JSON.stringify() = json -> 문자열로
+	
+		var vo =  JSON.parse( '[[${vo}]]' ); 
+		console.log( typeof(vo) ); //json
+		console.log(vo.first, vo.sno, vo.last, vo.regdate);
+		
+		var name = JSON.parse( '[[${name}]]');
+		var arr = JSON.parse(  '[[${arr}]]' );
+		
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

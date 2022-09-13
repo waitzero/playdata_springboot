@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>타임리프의 block문</h3>
+	
+	<!-- 
+	<ul>
+		<li th:each="vo : ${list}" >
+			<a href="#">[[${vo}]]</a>
+		</li>
+	</ul>
+	 -->
+	
+	<ul>
+		<th:block th:each="vo : ${list}">
+			<li><a href="#">[[${vo}]]</a></li>
+		</th:block>
+	</ul>
+
+	
+	
+	<h3>타임리프의 a링크 사용방법</h3>
+	<!-- 
+	<a href="ex03_result?sno=1&first=홍길동">기존의사용방법</a>
+ 	-->
+		
+	<a th:href="@{ex03_result(sno=1, first=홍길동 ) }">타임리프방법</a>
+	
+	<!-- 패스베리어블방식 -->
+	<!-- 
+	<a href="ex03_result2/1/홍길동">pathvariable방법</a>
+	 -->
+	
+	<a th:href="@{ex03_result2/{sno}/{first}(sno=1, first=홍길동) }">pathvariable방법</a>
+
+
+
+
+
+
+
+</body>
+</html>

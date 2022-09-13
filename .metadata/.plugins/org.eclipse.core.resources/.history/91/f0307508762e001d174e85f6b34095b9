@@ -1,0 +1,8 @@
+package com.simple.bootbasic.service.board;
+
+import com.simple.bootbasic.command.BoardVO;
+
+public interface BoardService {
+
+	public int regist(BoardVO vo); //insert
+}

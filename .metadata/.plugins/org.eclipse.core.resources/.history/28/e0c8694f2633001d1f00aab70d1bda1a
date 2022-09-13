@@ -1,0 +1,16 @@
+package com.coding404.myweb.user.service;
+
+import org.springframework.stereotype.Service;
+
+import com.coding404.myweb.command.UsersVO;
+
+@Service("userService")
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public int idCheck(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

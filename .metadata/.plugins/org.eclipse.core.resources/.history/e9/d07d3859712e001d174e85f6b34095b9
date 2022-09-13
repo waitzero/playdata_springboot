@@ -1,0 +1,8 @@
+package com.simple.bootbasic.service.board;
+
+import org.springframework.stereotype.Service;
+
+ //이름명시 
+public class BoardServiceImpl implements BoardService {
+
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- [[${list}]] -->
+
+	<div th:each="vo : ${list}">	
+		[[${vo}]]
+		[[${vo.name}]]
+		[[${vo.age}]]
+	</div>
+	
+	<hr>
+	
+	<div th:each="vo, status : ${list}">
+		[[${status} ]]<br>
+		[[${vo}]]<br>
+	</div>
+	
+	
+	<!-- 반복문과 조건식을 같이 사용할 수 있음 -->
+	<ul>
+		<li th:each="vo : ${list}" th:if="${vo.age % 2 == 0}">[[${vo.name}]]</li>
+	</ul>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.coding404.myweb.users.service;
+
+public class UserServiceImpl {
+
+}
