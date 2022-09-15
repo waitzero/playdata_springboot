@@ -1,9 +1,0 @@
-package com.simple.bootbasic.command;
-
-public class ValidVO {
-
-	private String name;
-	private Integer salary;
-	private String phone;
-	private String email;
-}

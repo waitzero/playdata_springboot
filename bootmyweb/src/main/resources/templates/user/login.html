@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,11 +18,11 @@
         판매자 로그인
       </div>
   
-      <form class="loginForm">
+      <form action="login" method="post" class="loginForm">
         <p>국내 판매자(개인/사업자) 또는 해외 개인 판매자로 등록되어 있는 경우에만 로그인이 가능합니다.</p>
-        <input class="inputText" name="id"type="text" placeholder="아이디"></input>
-        <input class="inputText" name="pw"type="text" placeholder="패스워드"></input>
-               <button type="submit" class="loginBtn">로그인</button>
+        <input class="inputText" name="id" type="text" placeholder="아이디"></input>
+        <input class="inputText" name="pw" type="text" placeholder="패스워드"></input>
+        <button type="submit" class="loginBtn">로그인</button>
         <button type="button" class="loginBtn kakaoBtn"></button>
       </form>
   
@@ -40,18 +40,23 @@
   
     </div>
   </div>
+
   
-  <!--메세지 처리  -->
- <script th:inline="javascript">
-	var msg = JSON.parse('[[${msg}]]');	
- 	if(msg != null){
- 		alert(msg);
- 	}
- </script>
- 
- 
- 
- 
+  <!-- 메시지처리(JS에서 자바데이터 사용) -->
+  <script th:inline="javascript">
+	var msg = JSON.parse('[[${msg}]]');
+  	if(msg != null) {
+  		alert(msg);
+  	}
+  </script>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

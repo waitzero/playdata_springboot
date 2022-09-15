@@ -10,10 +10,13 @@ public class MainController {
 
 	@GetMapping("/main")
 	public String home(HttpSession session) {
-		String userId= (String)session.getAttribute("userId");
-		if(userId == null) {
-			return "redirect:/user/login";
-		}
+		//세션검사
+//		String userId = (String)session.getAttribute("userId");
+//		if(userId == null) {
+//			return "redirect:/user/login";
+//		}
+				
+		
 		return "main";
 	}
 	

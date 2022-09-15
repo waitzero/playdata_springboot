@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+<!-- ~{경로 :: 전달할 선택자} -->
+<th:block th:replace="~{./include/basicLayout :: setContent(~{ :: .wrap  } ) }"> 
+
+	<div class="wrap">
+		<div class="warp_inner">
+
+			<!-- left_menu end -->
+			<div class="right_content">
+				
+				<div class="midiaq">
+					<div class="mainWrapper"> 
+						<div class="ipssGiudeBlock" style="color:red; font-size: large;">
+							-요구사항<br>
+							-내가 작성한 글만 볼 수 있습니다. (where id = 'admin')<br>
+							-수정/삭제 클릭시 수정/삭제 화면으로 넘어갑니다<br>
+						</div>
+					</div>
+
+					<form name="###########" action="############" method="get" >
+
+					<div class="full_collum collum">
+						<ul>
+							<li class="collum_tit">
+								<h2>내글 목록</h2>
+
+								<select class="">
+									<option value="10">10개 보기</option>
+									<option value="20">20개 보기</option>
+									<option value="40">40개 보기</option>
+									<option value="80">80개 보기</option>
+								</select>
+								<span class="showtoggle minus"></span>
+								<ul>
+									<li>
+										<table cellpadding="0" cellspacing="0" class="row_tb_7" width="100%;">
+											<tr>
+												<th>순서</th>
+												<th>아이디</th>
+												<th>제목</th>
+												<th>내용</th>
+												<th>등록일</th>
+												<th>수정/삭제</th>
+											</tr>
+												
+											<tr th:each="vo, status : ${list}">
+												<td>[[${status.count}]]</td>
+												<td>[[${vo.writer}]]</td>
+												<td><a th:href="@{noticeDetail(nno=${vo.nno}) }">[[${vo.title}]]</a></td>
+												<td>
+													[[${vo.content}]]
+												</td>
+												<td>[[${vo.noticedate}]]</td>
+												<td>
+                                                    <a th:href="@{noticeModify(nno=${vo.nno}, writer=${vo.writer} ) }">수정 / 삭제</a>
+
+                                                </td>
+											</tr>
+
+
+										</table>
+
+
+										<div class="page">
+											<ul>
+												<li>
+													<a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+												</li>
+												<li class="on"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">5</a></li>
+
+												<li>
+													<a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+												</li>
+				
+											</ul>
+										</div>
+									</li>
+
+								</ul>
+							</li>
+						</ul>
+					</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+
+
+	
+	</div><!-- end wrap -->
+
+</th:block>

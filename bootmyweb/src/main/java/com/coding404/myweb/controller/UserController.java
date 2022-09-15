@@ -1,7 +1,5 @@
 package com.coding404.myweb.controller;
 
-import java.lang.ProcessBuilder.Redirect;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	
 	//로그인화면
 	@GetMapping("/login")
 	public String login() {
@@ -39,30 +36,51 @@ public class UserController {
 	public String userDetail() {
 		return "user/userDetail";
 	}
-	
+
+	//회원가입
 	@PostMapping("/joinForm")
 	public String joinForm(UsersVO vo, RedirectAttributes RA) {
-		int result= userService.join(vo);
-		if(result == 1) {
+		
+		int result = userService.join(vo);
+		
+		if(result == 1) { //성공
 			RA.addFlashAttribute("msg", "환영합니다");
-		}else {
-			RA.addFlashAttribute("msg", "다시한번 홛인해주세요");
+		} else { //실패
+			RA.addFlashAttribute("msg", "가입에 실패했습니다. 관리자에게 문의하세요");
 		}
-		System.out.println(vo.toString());
-		return"redirect:/user/login";
+		
+		return "redirect:/user/login"; //이동
+		
 	}
+	
 	@PostMapping("/login")
 	public String login(UsersVO vo, RedirectAttributes RA, HttpSession session) {
+		
+		//로그인처리
 		UsersVO userVO = userService.login(vo);
-	if(userVO != null) {
-		session.setAttribute("userId", userVO.getId());
-		session.setAttribute("userName", userVO.getName());
-		return "redirect:/main";
-	}else {
-		RA.addFlashAttribute("msg", "아이디 또는 비밀번호를 확인학세요");
-		return"redirect:/user/login";
+		if(userVO != null) { //로그인 성공
+			
+			//성공이었다면 세션에 정보를 저장한다.
+			//화면에서 세션에 대한 접근 [[${session.userName}]] 
+			session.setAttribute("userId", userVO.getId());
+			session.setAttribute("userName", userVO.getName());
+			
+			//홈화면으로 이동.
+			return "redirect:/main"; //성공시 메인화면
+		} else { //로그인 실패
+			//다시 로그인 화면
+			RA.addFlashAttribute("msg", "아이디 또는 비밀번호를 확인하세요");
+			return "redirect:/user/login";
+		}
+		
 	}
-	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

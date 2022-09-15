@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
 						<li class="clear">
                             <label for="email_lbl" class="tit_lbl pilsoo_item">아이디</label>
                             <div class="app_content email_area">
-                                <input type="text" class="w160" id="id_lbl" title="아이디" placeholder="아이디" />
+                                <input type="text" class="w160" name="id" id="id_lbl" title="아이디" placeholder="아이디" />
 								<input type="hidden" class="w160" id="auth" value="false" />
 								<span class="valid" id="id_msg"></span>
                             </div>
@@ -37,14 +37,14 @@
 						<li class="clear">
 							<label for="name_lbl" class="tit_lbl pilsoo_item">이름</label>
 							<div class="app_content">
-								<input type="text" class="w160p" id="name_lbl" placeholder="이름을 입력해주세요"/>
+								<input type="text" class="w160p" name="name" id="name_lbl" placeholder="이름을 입력해주세요"/>
 								<span class="valid"></span>
 							</div>
 						</li>
 						<li class="clear">
 							<label for="pwd_lbl" class="tit_lbl pilsoo_item">비밀번호</label>
 							<div class="app_content">
-								<input type="password" class="w100p" id="pwd_lbl" placeholder="비밀번호를 입력해주세요"/>
+								<input type="password" class="w100p" name="pw" id="pwd_lbl" placeholder="비밀번호를 입력해주세요"/>
 								<span class="valid"></span>
 							
 							</div>
@@ -68,7 +68,7 @@
 						<li class="clear">
 							<label for="phone_lbl" class="tit_lbl pilsoo_item">연락처</label>
 							<div class="app_content" style="overflow: hidden;">
-								<input type="tel" class="left" name="phone"id="phone_lbl" placeholder="휴대폰”-”없이 숫자만 입력하세요"/>
+								<input type="tel" class="left" name="phone" id="phone_lbl" placeholder="휴대폰”-”없이 숫자만 입력하세요"/>
 								<button type="button" class="apiBtn left" >API본인인증</button>
 								<span class="valid"></span>
 							</div>
@@ -78,8 +78,8 @@
 						<li class="clear">
                             <span class="tit_lbl">SNS 활용동의</span>
 							<div class="app_content checkbox_area">
-								<input type="radio" class="css-checkbox" name="sns_yn" value="y"id="agree_1" checked><label for="agree_1">동의함(필수)</label>
-								<input type="radio" class="css-checkbox" name="sns_yn" value="n"id="agree_2" ><label for="agree_2">동의하지않음</label>
+								<input type="radio" class="css-checkbox" name="sns_yn" value="y" id="agree_1" checked><label for="agree_1">동의함(필수)</label>
+								<input type="radio" class="css-checkbox" name="sns_yn" value="n" id="agree_2" ><label for="agree_2">동의하지않음</label>
 							</div>
 						</li>
                         <li>
@@ -119,15 +119,13 @@
 			if( $("#auth").val() != 'true' ) {
 				alert("아이디를 확인하세요");
 				return;
-			}  else if( $("#name_lbl").val().length < 3 ) {
-				alert("닉네임은 3글자 이상입니다.");
-				return
-			}else{
+			} else if( $("#name_lbl").val().length < 3 ) {
+				alert("닉네임은 3글자 이상입니다");
+				return;
+			} else {
 				$(".appForm").submit();
-			}	
-
-		})
-
+			}
+		});
 		
 		//아이디란 유효성검사
 		$("#id_lbl").keyup(function() {
@@ -154,37 +152,44 @@
 		});
 		
 		//아이디 중복검사 focusout이벤트 비동기처리
-		
 		$("#id_lbl").focusout(function() {
 			
-			
-			if($(this).val().length<5){
-				$("#id_msg").html("아이디는 5글자 이상입니다.");
-				return;
+			if( $(this).val().length < 5 ) {
+				$("#id_msg").html("아이디는 5글자 이상입니다");
+				return; //함수 종료
 			}
-		var id = $(this).val();
+			
+			//post요청
+			var id = $(this).val();
+			
 			$.ajax({
-				type:"post",//요청형식
-				url:"../idCheck", //폴더명을이포함 user/idConfirm 요청
-				data:JSON.stringify({"id": id }),
-				contentType : "application/json",
-				success: function(data) {
-					if(data == 0){
+				type: "post", //요청형식
+				url: "../idCheck", //요청주소
+				data : JSON.stringify({"id": id }),
+				contentType : "application/json", 
+				success : function(data) {
+					
+					if(data == 0) { //중복x
 						$("#id_lbl").attr("readonly", true);
 						$("#id_msg").html("사용 가능한 아이디입니다");
 						$("#auth").val(true);
-					}else{
+					
+					} else { //중복o
 						$("#id_lbl").attr("readonly", false);
 						$("#id_msg").html("중복된 아이디 입니다");
 						$("#auth").val(false);
 					}
+					
+					
 				},
-        		error: function(status) {
-        			console.log (status);
-        		}
-			})
-		});
-		
+				error: function(status, err) {
+					console.log(status)
+				}
+				
+			});
+			
+			
+		})
 		
 		
 		
