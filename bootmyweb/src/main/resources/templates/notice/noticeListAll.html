@@ -22,21 +22,33 @@
 					</div>
 					<div class="page_title">관리자검색</div>
 					
-					<form name="###########" action="############" method="get" >
+					
+					<!-- 
+					1. 검색에 대한 키워드를 추가하고, criteria에서 검색키워드를 추가한다.
+					2. hidden태그를 이용해서 page=1, amount값도 넘겨줘야 합니다.
+					3. 검색키워드의 유지 @ModelAttribute
+					4. a링크를 클릭해서 페이지를 넘어다닐때 검색키워드도 함께 담아줍니다.
+					 -->
+					
+					<form name="searchForm" action="noticeListAll" method="get" >
 					<div class="search_block flfull">
-
+						
+						<input type="hidden" name="page" th:value="1">
+						<input type="hidden" name="amount" th:value="${pageDTO.amount}">
+						
+						
 						<div class="fl">
 							<div>
 								<span class="search_th">아이디 검색</span>
-								<input type="text" class="" placeholder="아이디 검색">
+								<input type="text" name="writer"  th:value="${cri.writer}" class="" placeholder="아이디 검색">
 							</div>
 							<div>
 								<span class="search_th">제목 검색</span>
-								<input type="text" class="" placeholder="제목 검색">
+								<input type="text" name="title"   th:value="${cri.title}" class="" placeholder="제목 검색">
 							</div>
 							<div>
 								<span class="search_th">내용 검색</span>
-								<input type="text" class="" placeholder="내용 검색">
+								<input type="text" name="content" th:value="${cri.content}" class="" placeholder="내용 검색">
 							</div>
 
 
@@ -44,7 +56,7 @@
 
 						<div class="fr">
 							<div class="search_btn_area">
-								<a href="#" class="normal_btn purplebtn">검색</a>
+								<a href="#" class="normal_btn purplebtn" id="noticeSearch">검색</a>
 								<a href="#" class="normal_btn purplebtn02">등록</a>
 							</div>
 						</div>
@@ -55,11 +67,11 @@
 							<li class="collum_tit">
 								<h2>판매자 소통공간</h2>
 
-								<select class="">
-									<option value="10">10개 보기</option>
-									<option value="20">20개 보기</option>
-									<option value="40">40개 보기</option>
-									<option value="80">80개 보기</option>
+								<select class="" id="handleAmount" >
+									<option value="10" th:selected="${pageDTO.amount == 10}">10개 보기</option>
+									<option value="20"th:selected="${pageDTO.amount == 20}">20개 보기</option>
+									<option value="40"th:selected="${pageDTO.amount == 40}">40개 보기</option>
+									<option value="80"th:selected="${pageDTO.amount == 80}">80개 보기</option>
 								</select>
 								<span class="showtoggle minus"></span>
 								<ul>
@@ -74,7 +86,7 @@
 												<th>등록일</th>
 											</tr>
 												
-											<tr th:each="vo, status : ${list}">
+											<tr th:each="vo, status : ${pageDTO.pageData}">
 												<td>[[${status.count}]]</td>
 												<td>[[${vo.nno}]]</td>
 												<td>[[${vo.writer}]]</td>
@@ -88,26 +100,109 @@
 
 										</table>
 
-
+										<!-- 
 										<div class="page">
 											<ul>
 												<li>
-													<a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+													<a th:href="@{noticeListAll(page=1, amount=${pageDTO.amount} )}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
 												</li>
-												<li>
-													<a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+												
+												
+												<li th:if="${pageDTO.prev}">
+													<a th:href="@{noticeListAll(page=${pageDTO.start - 1}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
 												</li>
-												<li class="on"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#">5</a></li>
+												
+												<th:block th:each="num : ${pageDTO.pageList}">
+												<li th:class="${num == pageDTO.page ? 'on' : ''}">
+													<a th:href="@{noticeListAll(page=${num}, amount=${pageDTO.amount}) }">[[${num}]]</a>
+												</li>
+												</th:block>
+												
 
-												<li>
-													<a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+												<li th:if="${pageDTO.next}">
+													<a th:href="@{noticeListAll(page=${pageDTO.end + 1}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
 												</li>
+												
 												<li>
-													<a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+													<a th:href="@{noticeListAll(page=${pageDTO.pageTotal}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+												</li>
+				
+											</ul>
+										</div>
+										 -->
+										<!-- 
+										<div class="page">
+											<ul>
+												<li>
+													<a th:href="@{noticeListAll(page=1, amount=${pageDTO.amount} )}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+												</li>
+												
+												
+												<li th:if="${pageDTO.prev}">
+													<a th:href="@{noticeListAll(page=${pageDTO.start - 1}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+												</li>
+												
+												<th:block th:each="num : ${pageDTO.pageList}">
+												<li th:class="${num == pageDTO.page ? 'on' : ''}">
+													<a th:href="@{noticeListAll(page=${num}, amount=${pageDTO.amount}) }">[[${num}]]</a>
+												</li>
+												</th:block>
+												
+
+												<li th:if="${pageDTO.next}">
+													<a th:href="@{noticeListAll(page=${pageDTO.end + 1}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+												</li>
+												
+												<li>
+													<a th:href="@{noticeListAll(page=${pageDTO.pageTotal}, amount=${pageDTO.amount} )}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+												</li>
+				
+											</ul>
+										</div>
+										-->
+										
+										<div class="page">
+											<ul>
+												<li>
+													<a th:href="@{noticeListAll(page=1, 
+																				amount=${pageDTO.amount},
+																				writer=${cri.writer},
+																				title=${cri.title},
+																				content=${cri.content} )}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+												</li>
+												<li th:if="${pageDTO.prev}">
+													<a th:href="@{noticeListAll(page=${pageDTO.start - 1},
+																				amount=${pageDTO.amount},
+																				writer=${cri.writer},
+																				title=${cri.title},
+																				content=${cri.content} )}"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+												</li>
+												
+												<th:block th:each="num : ${pageDTO.pageList}">
+												<li th:class="${num == pageDTO.page ? 'on' : ''}">
+													<a th:href="@{noticeListAll(page=${num},
+																				amount=${pageDTO.amount},
+																				writer=${cri.writer},
+																				title=${cri.title},
+																				content=${cri.content} )}">[[${num}]]</a>
+												</li>
+												</th:block>
+												
+
+												<li th:if="${pageDTO.next}">
+													<a th:href="@{noticeListAll(page=${pageDTO.end + 1},
+																				amount=${pageDTO.amount},
+																				writer=${cri.writer},
+																				title=${cri.title},
+																				content=${cri.content} )}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+												</li>
+												
+												<li>
+													<a th:href="@{noticeListAll(page=${pageDTO.pageTotal},
+																				amount=${pageDTO.amount},
+																				writer=${cri.writer},
+																				title=${cri.title},
+																				content=${cri.content} )}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 												</li>
 				
 											</ul>
@@ -128,3 +223,31 @@
 	</div><!-- end wrap -->
 
 </th:block>
+
+
+<script>
+	//검색버튼 이벤트
+	$("#noticeSearch").click(function() {
+		
+		event.preventDefault(); //a의 기본이벤트 중지
+		$("form[name='searchForm']").submit();
+	});
+	
+	//데이터개수 이벤트
+	$("#handleAmount").change(function() {
+		var amount = $(this).val();
+		$("input[name'amount']").val(amount);
+		//서브밋
+		$("form[name='searchForm']").submit();
+	})
+	
+	
+
+</script>
+
+
+
+
+
+
+

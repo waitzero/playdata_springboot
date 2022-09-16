@@ -11,7 +11,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.coding404.myweb.entity.Notice;
+import com.coding404.myweb.entity.QNotice;
 import com.coding404.myweb.user.service.UserMapper;
+import com.coding404.myweb.util.page.Criteria;
+import com.coding404.myweb.util.page.PageDTO;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -29,8 +34,43 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<Notice> getList() {
-		return noticeRepository.findAll( Sort.by("nno").descending() );
+	public PageDTO<Notice> getList(Criteria cri) {
+
+		Pageable pageable = PageRequest.of( cri.getPage() - 1,
+											cri.getAmount(),
+											Sort.by("nno").descending() ); 
+
+		//동적쿼리를 만듬.
+		QNotice qNotice = QNotice.notice;
+		
+		//조건을 조합할 불린빌더
+		BooleanBuilder builder = new BooleanBuilder();
+		
+		//ID에 값이 있다면? express로 표현
+		//cri의 writer가 공백이 아니거나 null이 아닐때
+		if( cri.getWriter() != null && !cri.getWriter().equals("") ) {
+			BooleanExpression express = qNotice.writer.like("%" + cri.getWriter() + "%" );
+			builder.and(express); //or and
+		}
+		
+		if( cri.getTitle() != null && !cri.getTitle().equals("") ) {
+			BooleanExpression express = qNotice.title.like("%" + cri.getTitle() + "%" );
+			builder.and(express);
+		}
+		
+		if( cri.getContent() != null && !cri.getContent().equals("") ) {
+			BooleanExpression express = qNotice.content.like("%" + cri.getContent() + "%" );
+			builder.and(express);
+		}
+		
+		//조회
+		//Page<Notice> result = noticeRepository.findAll(pageable);
+		Page<Notice> result = noticeRepository.findAll(builder, pageable);
+		
+		//페이지네이션 처리
+		PageDTO<Notice> pageDTO = new PageDTO<>(result);
+		
+		return pageDTO;
 	}
 
 	@Override
@@ -66,20 +106,23 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public Notice noticeUpdate(Notice notice) {
+		
 		//조회한 결과를 가지고 있다면, save메서드를 이용해서 update수행
-		Optional<Notice> result = noticeRepository.findById(notice.getNno());
-		if(result.isPresent()) {
+		Optional<Notice> result = noticeRepository.findById( notice.getNno() );
+		if( result.isPresent() ) { //결과가 있음
+			
 			Notice n = result.get();
-			n.setTitle(notice.getTitle());
-			n.setContent(notice.getContent());
+			n.setTitle( notice.getTitle() ); //화면에서 수정된 값을 엔티티값으로 변경
+			n.setContent( notice.getContent() ); 
+			
 			return noticeRepository.save(n);
 		}
 		return null;
+		
 	}
 
 	@Override
 	public void noticeDelete(Long nno) {
-		// TODO Auto-generated method stub
 		noticeRepository.deleteById(nno);
 	}
 	

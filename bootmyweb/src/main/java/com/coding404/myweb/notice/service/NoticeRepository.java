@@ -4,11 +4,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import com.coding404.myweb.entity.Notice;
 
-public interface NoticeRepository extends JpaRepository<Notice, Long> { //<엔티티, PK타입>
+public interface NoticeRepository extends JpaRepository<Notice, Long>, //<엔티티, PK타입>
+										  QuerydslPredicateExecutor<Notice> { //쿼리DSL<엔티티>
 	
 	//쿼리메서드
 	Page<Notice> findByWriter(String writer, Pageable pageable);

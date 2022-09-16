@@ -19,6 +19,7 @@
 						</div>
 					</div>
                     <div class="page_title">게시글 연습 > <span class="page_subtitle">글수정/삭제</span></div>
+                    
                     <form name="actionForm" action="#####" method="post">
                         <div class="full_collum collum">
                             <ul>
@@ -33,17 +34,17 @@
                                                 <tr>
                                                     <th>등록일</th>
                                                     <td>
-                                                        <span>2016-01-01</span>
+                                                        <span>[[${notice.noticedate}]]</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th>아이디</th>
-                                                    <td><input type="text" class="inputw150" name="writer" th:value="${notice.writer}"readonly></td>
+                                                    <td><input type="text" class="inputw150" name="writer" th:value="${notice.writer}" readonly></td>
                                                 </tr>
 
                                                 <tr>
                                                     <th>제목</th>
-                                                    <td colspan="5"><input type="text" class="inputw99p" th:value="${notice.title}"name="title"></td>
+                                                    <td colspan="5"><input type="text" class="inputw99p" name="title" th:value="${notice.title}"></td>
                                                 </tr>
 
 
@@ -56,7 +57,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr style="display:none;">
-													<td><input type="hidden" name="nno" value="${notice.nno}"></td>
+													<td><input type="hidden" name="nno" th:value="${notice.nno}"></td>
 												</tr>
 												
 
@@ -70,7 +71,7 @@
                                                 <!-- 수정, 삭제는 JS를통해 제어합니다 -->
                                                 <a href="#" class="save" id="modifyBtn">수정</a>
                                                 <a href="#" class="delete">목록</a>
-                                                <a href="#" class="revise mglr13">삭제</a> 
+                                                <a href="#" class="revise mglr13" id="deleteBtn">삭제</a> 
                                                 
                                             </div>
                                         </li>
@@ -90,19 +91,26 @@
     <!-- wrap end -->
 </th:block>
 
+<!-- 이화면에서 사용할 JS는 block구문 바깥에서 사용합니다. -->
 <script>
-	$("#modifyBtn").click(function(){
-		//a태그는 기보ㅓㄴ이벤트를 가지고 있기 때문에
-		event.preventDefault();//a태그의 기본 이벤트
-	$("form[name='actionForm']").attr("action", "noiceUpdate");
-	$("form[name='actionForm']").submit();
+	//1개의 폼을 가지고 2가지 작업을 해야하기 떄문에
+	//수정버튼
+	$("#modifyBtn").click(function() {
+		//a태그는 기본이벤트를 가지고 있기떄문에
+		event.preventDefault(); //a태그의 기본이벤트 중지
+		$("form[name='actionForm']").attr("action", "noticeUpdate");
+		$("form[name='actionForm']").submit();
+	})
+		
+	//삭제버튼
+	$("#deleteBtn").click(function() {
+		event.preventDefault(); //a태그의 기본이벤트 중지
+		$("form[name='actionForm']").attr("action", "noticeDelete");
+		$("form[name='actionForm']").submit();
+	})
 	
-})
-$("#deleteBtn").click(function(){
-	event.preventDefault();//a태그의 기본이벤트
-	$("form[name='actionForm']").attr("action", "noiceDelete");
-	$("form[name='actionForm']").submit();
 	
-})
-
+	
 </script>
+
+
